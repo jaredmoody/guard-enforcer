@@ -35,7 +35,9 @@ The init command will:
 
 ## Setup
 
-Add this callback to each Guard you wish to enforce:
+To your Guardfile:
+
+Add `require 'guard/enforcer'` at the top, then add this callback to each Guard you wish to enforce:
 
 `callback(Enforcer, [:start_end, :run_all_end])`
 
