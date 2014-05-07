@@ -7,9 +7,9 @@ class Guard::Enforcer
   #
 
   def self.call(guard_class, event, *args)
-    Guard::UI.debug "Enforcer: Updating #{guard_class} last run."
+    Guard::UI.debug "Enforcer: Updating #{guard_class.name} last run."
     yaml = File.exists?(LOG_FILE) ? YAML.load_file(LOG_FILE) || {} : {}
-    yaml[guard_class.to_s] = Time.now
+    yaml[guard_class.name] = Time.now
     File.open(LOG_FILE, 'w'){|file| YAML.dump(yaml, file)}
   end
 
@@ -70,7 +70,7 @@ class Guard::Enforcer
     puts
     puts "  callback(Guard::Enforcer, [:start_end, :run_all_end])"
     puts
-    puts "See http://github.com/jaredmoody/guard-inforcer for more information."
+    puts "See http://github.com/jaredmoody/guard-enforcer for more information."
     puts
   end
 end
